@@ -1,21 +1,7 @@
-import React from 'react';
-import * as APIs from '@/apis';
-
-async function getCountries() {
-  return await APIs.countries.getAll();
-}
+import { Routes } from '@/constants';
+import { redirect } from 'next/navigation';
 
 export default async function Page() {
-  const countries = await getCountries()
-
-  return (
-    <ul>
-      {React.Children.toArray(countries.map(country => (
-        <li>
-          {country.name}
-        </li>
-      )))}
-    </ul>
-  )
+  return redirect(Routes.COUNTRIES)
 
 }
