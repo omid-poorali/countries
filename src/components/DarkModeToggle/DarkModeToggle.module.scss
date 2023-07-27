@@ -1,0 +1,12 @@
+.root {
+    display: block;
+    padding: 0.5rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba($color: #000000, $alpha: .1);
+    }
+}
