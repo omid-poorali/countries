@@ -2,7 +2,7 @@
 
 import { InputBase } from '@/components';
 import { useQueryParam } from '@/hooks';
-import classes from './page.module.scss';
+import classes from './Filters.module.scss';
 import { Dropdown } from '@/components/Dropdown';
 import { ClientComponentCountries } from './ClientComponentCountries';
 
@@ -44,6 +44,7 @@ export const Filters = ({
             <div className={classes.filters}>
 
                 <InputBase
+                    className={classes.searchBar}
                     name="query"
                     placeholder='Search for a country...'
                     defaultValue={query}

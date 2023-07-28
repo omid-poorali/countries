@@ -1,0 +1,23 @@
+@import '../../styles/breakpoints';
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+
+    @include md {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.searchBar {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    @include md {
+        width: 30ch;
+        margin-bottom: 0;
+    }
+}
