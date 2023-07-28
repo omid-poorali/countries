@@ -1,4 +1,4 @@
-@import '../../styles/mixins';
+@import '../../styles/breakpoints';
 
 .root {
     width: 100%;
@@ -8,7 +8,7 @@
     padding: 1rem;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
 
-    @include respond-to('small') {
+    @include md {
         padding: 2rem;
     }
 }
