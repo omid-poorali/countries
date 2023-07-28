@@ -3,7 +3,7 @@
     /* total width */
     ::-webkit-scrollbar {
       background-color: #fff;
-      width: $spacing-3
+      width: 1rem
     }
   
     /* background of the scrollbar except button or resizer */
@@ -14,8 +14,8 @@
     /* scrollbar itself */
     ::-webkit-scrollbar-thumb {
       background-color: var(--neutral-300);
-      border-radius: $spacing-12;
-      border: $spacing-1 solid #fff
+      border-radius: 5rem;
+      border: .5rem solid #fff
     }
   
     ::-webkit-scrollbar-thumb:hover {
@@ -31,7 +31,7 @@
     /* total width */
     &::-webkit-scrollbar {
       background-color: #fff;
-      width: $spacing-3
+      width: 1rem
     }
   
     /* background of the scrollbar except button or resizer */
@@ -42,8 +42,8 @@
     /* scrollbar itself */
     &::-webkit-scrollbar-thumb {
       background-color: var(--neutral-300);
-      border-radius: $spacing-12;
-      border: $spacing-1 solid #fff
+      border-radius: 5rem;
+      border: .5rem solid #fff
     }
   
     &::-webkit-scrollbar-thumb:hover {

@@ -1,5 +1,3 @@
-@import '../../styles/variables';
-
 .root {
   display: inline-flex;
   flex-direction: row;
@@ -10,7 +8,7 @@
 
   color: var(--text-color);
   background-color: transparent;
-  outline-color: var(----element-color);
+  outline-color: var(--element-color);
 
   &:hover {
     outline-color: var(--element-color);

@@ -1,7 +1,7 @@
 'use client'
 
-import React, { KeyboardEvent, useRef, useState, useEffect } from "react";
-import { useControlled, useFindOptionIndex, useOutsideRefClick, useCombineRefs } from "../../hooks";
+import React, { KeyboardEvent, useRef, useState, useEffect, useMemo } from "react";
+import { useControlled, useOutsideRefClick, useCombineRefs } from "../../hooks";
 import CloseIcon from 'components/Icons/MoonFilled';
 import * as utils from '../../utils';
 import clsx from "clsx";
@@ -90,7 +90,18 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 		initialValue: null,
 	});
 
-	const selectedOptionIndex = useFindOptionIndex([options, value]);
+
+	const selectedOptionIndex = useMemo((): number => {
+		for (let i = 0; i < options.length; i++) {
+			if (options[i].value === value) {
+				return i;
+			}
+		}
+
+		return -1;
+	}, [options, value]);
+
+
 
 	const handleOpen = () => {
 		if (!disabled) {
