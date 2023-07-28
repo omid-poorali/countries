@@ -1,9 +1,15 @@
 import '@/styles/index.scss';
 import { Layout } from '@/components';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Nunito_Sans } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito_Sans({
+  weight: ['300', '600', '800'],
+  style: ['normal', 'italic'],
+  variable: '--nunito',
+  subsets: ['latin'],
+  display: "swap"
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={nunito.className}>
         <Layout.Header />
 
         <main>

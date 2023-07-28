@@ -39,7 +39,9 @@ export const getAll = async () => new Promise<GetAllResponse>((resolve) => {
         "TJK",
         "CHN"
       ],
-      "flag": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg"
+      "flags": {
+        "png":"https://upload.wikimedia…g_of_the_Taliban.svg.png"
+      }
     }
   ]);
 });

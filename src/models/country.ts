@@ -15,5 +15,7 @@ export type Country = {
         name: string;
     }[];
     borders: string[];
-    flag: string;
+    flags: {
+        png: string;
+    }
 }
