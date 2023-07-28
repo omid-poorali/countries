@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  outline-style: solid;
+  border: none;
+
+  color: var(--text-color);
+  background-color: transparent;
+  outline-color: var(----element-color);
+
+  &:hover {
+    outline-color: var(--element-color);
+    background-color: transparent;
+  }
+
+  &:focus {
+    outline-color: var(--element-color);
+    background-color: transparent;
+  }
+
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
+    cursor: not-allowed;
+  }
+}

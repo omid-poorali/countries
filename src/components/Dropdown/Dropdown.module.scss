@@ -1,0 +1,61 @@
+@import '../../styles/variables';
+@import '../../styles/scrollbar';
+
+.root {
+  @include beutifullScrollbar;
+
+  width: 30ch;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+
+.options {
+  border-radius: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px rgba(6, 78, 59, 0.06), 0px 1px 3px rgba(6, 78, 59, 0.1);
+  max-height: 20rem;
+  overflow-y: auto;
+  overflow-x: hidden
+}
+
+.option {
+  font-size: 1rem;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 1rem;
+
+  &[active='true'],
+  &:hover {
+      background-color: var(--element-color);
+      color: var(--text-color);
+  }
+}
+
+
+.trigger {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transition: all 0.2s;
+  cursor: pointer;
+  user-select: none;
+
+  &[active='true'] {
+      transform: rotate(180deg);
+  }
+
+  &.disabled {
+      cursor: auto;
+      opacity: 0.6;
+  }
+}

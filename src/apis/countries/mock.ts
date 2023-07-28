@@ -9,6 +9,7 @@ import {
 const countries = [
   {
     "name": "Afghanistan",
+    "alpha3Code": "AFG",
     "capital": "Kabul",
     "nativeName": "افغانستان",
     "population": 40218234,

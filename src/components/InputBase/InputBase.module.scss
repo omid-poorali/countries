@@ -1,0 +1,44 @@
+@import '../../styles/variables';
+
+.root {
+  padding: 3rem;
+  background: none;
+  border-style: none;
+  outline: none;
+  color: var(--text-color);
+  background-color: var(--input-background-color);
+  border-radius: 1rem;
+
+  &:-internal-autofill-selected {
+    border-radius: 1rem;
+    background-color: transparent;
+  }
+
+  &::placeholder {
+    color: var(--text-color);
+  }
+
+  &:hover {
+    background-color: var(--input-background-color);
+  }
+
+  &:focus {
+    background-color: var(--input-background-color);
+  }
+
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+
+.disabled {
+  color: var(--text-color);
+  background-color: var(--input-background-color);
+
+  &:hover,
+  &:focus {
+    background-color: var(--input-background-color);
+  }
+}

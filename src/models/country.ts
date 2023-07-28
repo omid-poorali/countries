@@ -1,5 +1,6 @@
 export type Country = {
     name: string;
+    alpha3Code: string;
     capital: string;
     nativeName: string;
     population: number;

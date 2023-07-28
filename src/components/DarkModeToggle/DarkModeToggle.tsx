@@ -11,10 +11,10 @@ type CustomProps = {
 	className?: string | undefined;
 }
 
-type ButtonProps = CustomProps & Omit<React.ComponentPropsWithoutRef<'button'>, keyof CustomProps>;
+type DarkModeToggleProps = CustomProps & Omit<React.ComponentPropsWithoutRef<'button'>, keyof CustomProps>;
 
 
-export const DarkModeToggle = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const DarkModeToggle = React.forwardRef<HTMLButtonElement, DarkModeToggleProps>((props, ref) => {
 	const {
 		className,
 		children,

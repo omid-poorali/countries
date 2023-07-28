@@ -1,6 +1,6 @@
 import * as Models from 'models';
 
-export type GetAllResponse = Pick<Models.Country, "name" | "population" | "region" | "capital" | "flags">[];
+export type GetAllResponse = Pick<Models.Country, "name" | "population" | "region" | "capital" | "flags" | "alpha3Code">[];
 
 //---------------------------------------------------------
 
