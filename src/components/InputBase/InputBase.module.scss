@@ -1,28 +1,35 @@
 .root {
-  padding: 3rem;
-  background: none;
-  border-style: none;
-  outline: none;
-  color: var(--text-color);
+  width: 30ch;
   background-color: var(--input-background-color);
-  border-radius: 1rem;
+  border-radius: 3px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 
-  &:-internal-autofill-selected {
-    border-radius: 1rem;
-    background-color: transparent;
-  }
-
-  &::placeholder {
+  input {
+    padding: 1rem;
+    width: 100%;
+    background: none;
+    border-style: none;
+    outline: none;
     color: var(--text-color);
+
+    &:-internal-autofill-selected {
+      background-color: transparent;
+    }
+
+    &::placeholder {
+      color: var(--text-color);
+    }
+
+    &:hover {
+      background-color: var(--input-background-color);
+    }
+
+    &:focus {
+      background-color: var(--input-background-color);
+    }
   }
 
-  &:hover {
-    background-color: var(--input-background-color);
-  }
 
-  &:focus {
-    background-color: var(--input-background-color);
-  }
 
 }
 

@@ -19,17 +19,18 @@ export const InputBase = React.forwardRef((props: PropsType, forwardedRef: React
 		...rest
 	} = props;
 
-	const inputClassName = clsx(classes.root, {
+	const rootClassName = clsx(classes.root, {
 		[classes.fullWidth]: fullWidth,
 		[classes.disabled]: disabled,
 	}, className);
 
 	return (
-		<input
-			ref={forwardedRef}
-			className={inputClassName}
-			disabled={disabled}
-			{...rest} />
+		<div className={rootClassName}>
+			<input
+				ref={forwardedRef}
+				disabled={disabled}
+				{...rest} />
+		</div>
 	);
 });
 

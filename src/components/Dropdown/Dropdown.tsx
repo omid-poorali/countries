@@ -2,11 +2,10 @@
 
 import React, { KeyboardEvent, useRef, useState, useEffect, useMemo } from "react";
 import { useControlled, useOutsideRefClick, useCombineRefs } from "../../hooks";
-import CloseIcon from 'components/Icons/MoonFilled';
+import ArrowDown from 'components/Icons/ArrowDown';
 import * as utils from '../../utils';
 import clsx from "clsx";
 import classes from "./Dropdown.module.scss";
-import { InputBase } from "..";
 
 export type Option = {
 	label: string;
@@ -176,7 +175,7 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 
 
 
-	const triggerClassName = clsx("puiDropdown-trigger", {
+	const triggerClassName = clsx(classes.trigger, {
 		'disabled': disabled
 	});
 
@@ -212,14 +211,13 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 			ref={rootRef}
 			className={rootClassName}>
 
-			<InputBase
+			<input
 				autoComplete='off'
-				fullWidth
 				onClick={handleOpen}
 				readOnly
 				ref={combinedInputRef}
 				disabled={disabled}
-				value={options[selectedOptionIndex].label}
+				value={options?.[selectedOptionIndex]?.label ?? ""}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 				onKeyDown={handleKeyboardEvent}
@@ -238,7 +236,7 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 					}
 				}}
 				className={triggerClassName}>
-				<CloseIcon />
+				<ArrowDown />
 			</span>
 
 			{isOpen && renderOptions()}
