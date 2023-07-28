@@ -1,6 +1,6 @@
 .root {
   width: 30ch;
-  background-color: var(--input-background-color);
+  background-color: var(--element-color);
   border-radius: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 
@@ -21,11 +21,11 @@
     }
 
     &:hover {
-      background-color: var(--input-background-color);
+      background-color: var(--element-color);
     }
 
     &:focus {
-      background-color: var(--input-background-color);
+      background-color: var(--element-color);
     }
   }
 
@@ -34,16 +34,4 @@
   }
   
 
-}
-
-
-
-.disabled {
-  color: var(--text-color);
-  background-color: var(--input-background-color);
-
-  &:hover,
-  &:focus {
-    background-color: var(--input-background-color);
-  }
 }

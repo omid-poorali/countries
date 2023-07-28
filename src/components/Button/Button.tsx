@@ -5,28 +5,25 @@ import clsx from 'clsx';
 import classes from './Button.module.scss';
 
 type CustomProps = {
-	children?: React.ReactNode;
 	className?: string;
-} & React.ComponentPropsWithoutRef<'button'>;
+} & React.ComponentPropsWithoutRef<'a'>;
 
-type PropsType = CustomProps & Omit<React.ComponentPropsWithoutRef<'button'>, keyof CustomProps>;
+type PropsType = CustomProps & Omit<React.ComponentPropsWithoutRef<'a'>, keyof CustomProps>;
 
-export const Button = React.forwardRef((props: PropsType, forwardedRef: React.Ref<HTMLButtonElement>) => {
+export const Button = React.forwardRef((props: PropsType, forwardedRef: React.Ref<HTMLAnchorElement>) => {
 	const {
-		children,
 		className,
 		...rest
 	} = props;
 
 
 	return (
-		<button
+		<a
 			ref={forwardedRef}
 			className={clsx(classes.root, className)}
 			{...rest}
-		>
-			{children}
-		</button>
+		/>
+
 	);
 });
 

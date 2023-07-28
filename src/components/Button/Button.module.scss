@@ -1,29 +1,12 @@
 .root {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  outline-style: solid;
-  border: none;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  padding: 0.15rem 2rem;
+  margin: 0.25rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 3px;
+  font-size: 0.75rem;
 
-  color: var(--text-color);
-  background-color: transparent;
-  outline-color: var(--element-color);
-
-  &:hover {
-    outline-color: var(--element-color);
-    background-color: transparent;
-  }
-
-  &:focus {
-    outline-color: var(--element-color);
-    background-color: transparent;
-  }
-
-
-  &:disabled,
-  &:disabled:hover,
-  &:disabled:focus {
-    cursor: not-allowed;
-  }
+  background-color: var(--element-color);
 }

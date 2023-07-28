@@ -6,6 +6,7 @@ import * as APIs from '@/apis';
 import * as Models from '@/models';
 import * as Utils from '@/utils';
 import classes from './page.module.scss';
+import { Button } from '@/components';
 
 
 type Country = Omit<Models.Country, "borders"> & {
@@ -19,9 +20,11 @@ async function getCountry(alpha: string) {
   const country = await APIs.countries.getOne({ alpha });
   const borders: Country["borders"] = [];
 
-  for (const alpha of country.borders) {
-    const name = (await APIs.countries.getName({ alpha })).name;
-    borders.push({ name, alpha })
+  if (country.borders) {
+    for (const alpha of country.borders) {
+      const name = (await APIs.countries.getName({ alpha })).name;
+      borders.push({ name, alpha })
+    }
   }
 
   return {
@@ -47,6 +50,9 @@ export default async function Page({ params }: { params: { alpha: string } }) {
   return (
     <div className={classes.root}>
       <div className={classes.flagSection}>
+        <Link href={Utils.Route.generatePath(Routes.COUNTRIES)} passHref legacyBehavior>
+          <Button>Back</Button>
+        </Link>
         <div className={classes.flagWrapper}>
           <Image
             src={country.flags.png}
@@ -88,7 +94,9 @@ export default async function Page({ params }: { params: { alpha: string } }) {
         <div className={classes.borderCountries}>
           <h3>Border Countries:</h3>
           {React.Children.toArray(country.borders.map(border => (
-            <Link href={Utils.Route.generatePath(Routes.COUNTRY, { alpha: border.alpha })}>{border.name}</Link>
+            <Link href={Utils.Route.generatePath(Routes.COUNTRY, { alpha: border.alpha })} passHref legacyBehavior>
+              <Button>{border.name}</Button>
+            </Link>
           )))}
         </div>
       </div>

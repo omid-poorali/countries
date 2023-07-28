@@ -1,16 +1,13 @@
-@import '../../styles/breakpoints';
-
 .root {
     width: 100%;
+    background-color: var(--element-color);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1rem;
+    align-items: center;
+    padding: 1.5rem;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
 
-    @include md {
-        padding: 2rem;
-    }
 }
 
 .title {
