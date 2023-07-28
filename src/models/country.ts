@@ -20,3 +20,5 @@ export type Country = {
         png: string;
     }
 }
+
+export type CountryListItem = Pick<Country, "name" | "population" | "region" | "capital" | "flags" | "alpha3Code">;

@@ -10,7 +10,8 @@ async function getCountries() {
   return await APIs.countries.getAll();
 }
 
-export default async function Countries() {
+export default async function ServerComponentCountries() {
+
   const countries = await getCountries();
 
   return (

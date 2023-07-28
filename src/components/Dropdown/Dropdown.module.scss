@@ -68,7 +68,6 @@
   cursor: pointer;
   padding: 0.5rem 1rem;
 
-  &[active='true'],
   &:hover {
       background-color: var(--element-color);
       color: var(--text-color);

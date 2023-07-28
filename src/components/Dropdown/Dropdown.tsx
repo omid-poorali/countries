@@ -1,21 +1,20 @@
 'use client'
 
 import React, { KeyboardEvent, useRef, useState, useEffect, useMemo } from "react";
-import { useControlled, useOutsideRefClick, useCombineRefs } from "../../hooks";
+import { useControlled, useOutsideRefClick, useCombineRefs } from "@/hooks";
 import ArrowDown from 'components/Icons/ArrowDown';
-import * as utils from '../../utils';
 import clsx from "clsx";
 import classes from "./Dropdown.module.scss";
 
 export type Option = {
 	label: string;
 	value: any;
-	extra?: any;
 };
 
 type CustomProps = {
 	fullWidth?: boolean;
 	className?: string;
+	placeholder?: string;
 	disabled?: boolean;
 	options?: Array<Option>;
 	value?: any;
@@ -30,6 +29,7 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 		fullWidth = false,
 		className,
 		disabled = false,
+		placeholder = "",
 		options = [],
 		value: propValue,
 		defaultValue,
@@ -44,19 +44,9 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 	const rootRef = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const combinedInputRef = useCombineRefs([inputRef, forwardedRef]);
-	const activeOptionRef = useRef<HTMLLIElement>(null);
 
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
-	const [activeOption, setActiveOption] = useState<number>(0);
-
-	useEffect(() => {
-		if (activeOptionRef.current && rootRef.current) {
-			if (!utils.Dom.isElementVisible(activeOptionRef.current, rootRef.current)) {
-				activeOptionRef.current.scrollIntoView({ block: "nearest" });
-			}
-		}
-	}, [activeOption, activeOptionRef, rootRef]);
 
 	useOutsideRefClick(() => {
 		handleClose();
@@ -110,13 +100,8 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 
 	const handleClose = () => {
 		setIsOpen(false);
-		setActiveOption(0);
 	};
 
-	const handleDelete = (event: React.MouseEvent<HTMLElement>) => {
-		onChange?.({ event, value: null });
-		setValue(null);
-	};
 
 	const handleOptionClick = (event: React.MouseEvent<HTMLElement> | KeyboardEvent<HTMLInputElement>, option: Option) => {
 		onChange?.({ event, option, value: option.value });
@@ -132,42 +117,7 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 		handleClose();
 	};
 
-	const handleKeyboardEvent = (event: KeyboardEvent<HTMLInputElement>) => {
-		if (event.key === 'Enter') {
-			if (options.length > 0 && isOpen) {
-				event.preventDefault();
-				handleOptionClick(event, options[activeOption]);
-			} else {
-				handleClose();
-			}
-		} else if (event.key === "ArrowDown") {
-			if (activeOption === options.length - 1) {
-				return;
-			}
 
-			if (isOpen) {
-				setActiveOption(activeOption + 1);
-			} else {
-				handleOpen();
-			}
-		} else if (event.key === "ArrowUp") {
-			if (activeOption === 0) {
-				return;
-			}
-
-			setActiveOption(activeOption - 1);
-		}
-
-		onKeyDown?.(event);
-	};
-
-
-	const handleOptionRef = (option: (HTMLLIElement | null), index: number) => {
-		if (activeOption === index) {
-			// @ts-ignore
-			activeOptionRef.current = option;
-		}
-	};
 
 	const rootClassName = clsx(classes.root, {
 		'fullWidth': fullWidth,
@@ -191,9 +141,6 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 					className={optionsClassName}>
 					{React.Children.toArray(options.map((option: Option, index: number) => (
 						<li
-							// @ts-ignore
-							active={index === activeOption ? "true" : "false"}
-							ref={optionRef => handleOptionRef(optionRef, index)}
 							className={optionClassName}
 							onMouseDown={(event: React.MouseEvent<HTMLLIElement>) => handleOptionClick(event, option)}>
 							{option.label}
@@ -217,10 +164,9 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 				readOnly
 				ref={combinedInputRef}
 				disabled={disabled}
-				value={options?.[selectedOptionIndex]?.label ?? ""}
+				value={options?.[selectedOptionIndex]?.label ?? placeholder}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
-				onKeyDown={handleKeyboardEvent}
 				{...rest} />
 
 			<span

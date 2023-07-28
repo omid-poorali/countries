@@ -15,7 +15,7 @@ export function useQueryParam(key: string): UseQueryParam {
     const setValue = (value: string) => {
         const params = new URLSearchParams(searchParams.toString());
         params.set(key, value);
-        router.replace(`${pathname}?${params}`);
+        router.replace(`${pathname}?${params.toString()}`);
     }
 
     return [value, setValue];
