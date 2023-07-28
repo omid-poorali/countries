@@ -1,0 +1,60 @@
+.root {
+    display: flex;
+    flex-direction: row;
+}
+
+.flagSection {
+    width: 50%;
+    padding: 5rem;
+}
+
+.flagWrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 75%; /* 4:3 Aspect Ratio */
+}
+
+.info {
+    width: 50%;
+    padding: 5rem;
+    font-size: 0.75rem;
+
+    h2 {
+        padding: 0.5rem 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+    }
+
+    h3 {
+        font-weight: 600;
+    }
+
+    span {
+        font-weight: 300;
+        padding-left: 0.25rem;
+    }
+}
+
+.section {
+    width: 50%;
+}
+
+.property {
+    padding: 0.1rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.borderCountries {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    a {
+        
+    }
+}
