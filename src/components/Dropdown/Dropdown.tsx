@@ -1,7 +1,7 @@
 'use client'
 
 import React, { KeyboardEvent, useRef, useState, useEffect, useMemo } from "react";
-import { useControlled, useOutsideRefClick, useCombineRefs } from "@/hooks";
+import { useControlled, useOutsideRefClick, mergeRefs } from "@/hooks";
 import ArrowDown from 'components/Icons/ArrowDown';
 import clsx from "clsx";
 import classes from "./Dropdown.module.scss";
@@ -43,7 +43,7 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 
 	const rootRef = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
-	const combinedInputRef = useCombineRefs([inputRef, forwardedRef]);
+	const combinedInputRef = mergeRefs([inputRef, forwardedRef]);
 
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 

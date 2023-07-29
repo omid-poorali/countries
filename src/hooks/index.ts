@@ -1,4 +1,4 @@
-export * from './useCombineRef';
+export * from './mergeRefs';
 export * from './useControlled';
 export * from './useOutsideRefClick';
 export * from './useQueryParam';
