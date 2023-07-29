@@ -26,7 +26,8 @@ export const ClientComponentCountries = (props: PropsType) => {
         filtered = filtered.filter(country => country.region === region);
       }
       if (query) {
-        filtered = filtered.filter(country => (country.name.toLowerCase().includes(query) || `${country.population}`.toLowerCase().includes(query)));
+        filtered = filtered.filter(country => (Utils.String.hasAllCharsWithOrder(country.name.toLowerCase(), query.toLowerCase())
+          || `${country.population}`.toLowerCase().includes(query)));
       }
 
       setCountries(() => filtered);
