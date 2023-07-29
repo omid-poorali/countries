@@ -1,34 +1,32 @@
+@import '../../../styles//breakpoints';
+
 .root {
+
     display: flex;
-    flex-direction: row;
-}
+    flex-direction: column;
 
-.flagSection {
-    width: 50%;
-    padding: 0 10rem;
-    padding-top: 3rem;
-}
+    @include md {
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: 1fr 4fr 1fr;
+        grid-template-areas:
+            "t t t t t t t t t t t t"
+            "f f f f f f l l l r r r"
+            "f f f f f f b b b b b b";
 
-.flagWrapper {
-    margin-top: 3rem;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    padding-top: 75%; /* 4:3 Aspect Ratio */
-}
+    }
 
-.info {
-    width: 50%;
-    padding: 5rem;
-    font-size: 0.75rem;
+
+    font-size: 1rem;
 
     h2 {
-        padding: 0.5rem 0;
-        font-size: 1.25rem;
+        padding-bottom: 2rem;
+        font-size: 1.75rem;
         font-weight: 800;
     }
 
-    h3 {
+    strong {
         font-weight: 600;
     }
 
@@ -38,21 +36,75 @@
     }
 }
 
-.section {
-    width: 50%;
+.top {
+    grid-area: t;
+
+    a {
+        margin-top: 3rem;
+
+        @include md {
+            margin-left: 5rem;
+        }
+    }
+}
+
+.flag {
+    grid-area: f;
+    margin: 3rem 0;
+
+    @include md {
+        margin: 2rem 0;
+        padding: 0 5rem;
+    }
+}
+
+.imageWrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 75%;
+    /* 4:3 Aspect Ratio */
+}
+
+.left {
+    grid-area: l;
+}
+
+.right {
+    grid-area: r;
+}
+
+.bottom {
+    grid-area: b;
+
+    strong {
+        padding: 0.5rem 0;
+        display: block;
+    }
+
+    @include md {
+        strong {
+            padding: 0;
+            padding-right: 0.5rem;
+            display: inline;
+        }
+    }
+}
+
+.left,
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 2rem;
 }
 
 .property {
-    padding: 0.1rem 0;
+    padding: 0.3rem 0;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-}
-
-.borderCountries {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
 }

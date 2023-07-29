@@ -15,7 +15,8 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 2rem;
+  padding-bottom: 5rem;
 }
 .row {
   display: flex;
