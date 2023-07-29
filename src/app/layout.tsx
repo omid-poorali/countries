@@ -2,6 +2,7 @@ import '@/styles/index.scss';
 import { Layout } from '@/components';
 import type { Metadata } from 'next';
 import { Nunito_Sans } from 'next/font/google';
+import GoogleAnalytics from "./GoogleAnalytics";
 
 const nunito = Nunito_Sans({
   weight: ['300', '600', '800'],
@@ -24,8 +25,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
+        <GoogleAnalytics trackPageViews />
         <Layout.Header />
-
         <main>
           {children}
         </main>

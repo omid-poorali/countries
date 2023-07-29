@@ -8,6 +8,7 @@ services:
       dockerfile: ./Dockerfile
       args:
         NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL}
+        NEXT_PUBLIC_GA_MEASUREMENT_ID: ${NEXT_PUBLIC_GA_MEASUREMENT_ID}
     restart: always
     ports:
       - 3000:3000
