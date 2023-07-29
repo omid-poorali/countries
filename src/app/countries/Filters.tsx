@@ -3,7 +3,7 @@
 import { InputBase } from '@/components';
 import { useQueryParam } from '@/hooks';
 import classes from './Filters.module.scss';
-import { Dropdown } from '@/components/Dropdown';
+import { Dropdown } from '@/components';
 import { ClientComponentCountries } from './ClientComponentCountries';
 
 const regions = [
