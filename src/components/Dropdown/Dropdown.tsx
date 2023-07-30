@@ -75,8 +75,7 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 
 	const [value, setValue] = useControlled<any>({
 		controlled: propValue,
-		default: defaultValue,
-		initialValue: null,
+		default: defaultValue
 	});
 
 
