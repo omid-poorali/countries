@@ -5,4 +5,4 @@ export * from './Dropdown';
 export * from './Loading';
 export * from './InputText';
 export * from './Error';
-export * from './Layout';
+export * from './Header';

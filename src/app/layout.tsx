@@ -1,5 +1,5 @@
 import '@/styles/index.scss';
-import { Header } from '@/components';
+import { Header } from '@/components/Header';
 import type { Metadata } from 'next';
 import { Nunito_Sans } from 'next/font/google';
 import GoogleAnalytics from "./GoogleAnalytics";
