@@ -4,7 +4,7 @@
     flex-direction: column;
     width: 16rem;
     background-color: var(--element-color);
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    box-shadow: var(--shadow-base);
 }
 
 .flag {
