@@ -6,6 +6,7 @@ import classes from './Button.module.scss';
 
 type CustomProps = {
 	className?: string;
+	icon?: React.ReactNode;
 } & React.ComponentPropsWithoutRef<'a'>;
 
 type PropsType = CustomProps & Omit<React.ComponentPropsWithoutRef<'a'>, keyof CustomProps>;
@@ -13,6 +14,8 @@ type PropsType = CustomProps & Omit<React.ComponentPropsWithoutRef<'a'>, keyof C
 export const Button = React.forwardRef((props: PropsType, forwardedRef: React.Ref<HTMLAnchorElement>) => {
 	const {
 		className,
+		icon,
+		children,
 		...rest
 	} = props;
 
@@ -22,8 +25,9 @@ export const Button = React.forwardRef((props: PropsType, forwardedRef: React.Re
 			role='button'
 			ref={forwardedRef}
 			className={clsx(classes.root, className)}
-			{...rest}
-		/>
+			{...rest}>
+			{icon}{children}
+		</a>
 
 	);
 });

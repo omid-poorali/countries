@@ -5,9 +5,15 @@
   margin: 0.25rem;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 3px;
   font-size: 0.75rem;
 
   background-color: var(--element-color);
+
+  svg {
+    margin-right: 0.5rem;
+  }
 }

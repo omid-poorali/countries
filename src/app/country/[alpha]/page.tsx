@@ -7,6 +7,7 @@ import * as Models from '@/models';
 import * as Utils from '@/utils';
 import classes from './page.module.scss';
 import { Button } from '@/components';
+import ArrowBack from '@/components/Icons/ArrowBack';
 import clsx from 'clsx';
 
 
@@ -49,11 +50,11 @@ export default async function Page({ params }: { params: { alpha: string } }) {
 
 
   return (
-    <div className={clsx('container',classes.root)}>
+    <div className={clsx('container', classes.root)}>
 
       <div className={classes.top}>
         <Link href={Utils.Route.generatePath(Routes.COUNTRIES)} passHref legacyBehavior>
-          <Button>Back</Button>
+          <Button icon={<ArrowBack />}>Back</Button>
         </Link>
       </div>
 
