@@ -11,8 +11,7 @@
     overflow: hidden;
     position: relative;
     width: 100%;
-    padding-top: 75%;
-    /* 4:3 Aspect Ratio */
+    padding-top: 75%; /* 4:3 Aspect Ratio */
 }
 
 .property {
@@ -35,7 +34,7 @@
         font-weight: 800;
     }
 
-    h3 {
+    strong {
         font-weight: 600;
     }
 

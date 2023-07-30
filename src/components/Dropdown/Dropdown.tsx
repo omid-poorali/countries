@@ -1,14 +1,14 @@
 'use client'
 
-import React, { KeyboardEvent, useRef, useState, useEffect, useMemo } from "react";
+import React, { KeyboardEvent, useRef, useState, useMemo } from "react";
 import { useControlled, useOutsideRefClick, mergeRefs } from "@/hooks";
-import ArrowDown from 'components/Icons/ArrowDown';
+import ArrowDown from '@/components/Icons/ArrowDown';
 import clsx from "clsx";
 import classes from "./Dropdown.module.scss";
 
 export type Option = {
 	label: string;
-	value: any;
+	value: string;
 };
 
 type CustomProps = {
@@ -17,16 +17,18 @@ type CustomProps = {
 	placeholder?: string;
 	disabled?: boolean;
 	options?: Array<Option>;
-	value?: any;
-	defaultValue?: any;
-	onChange?: (_event: { event: React.MouseEvent<HTMLElement> | KeyboardEvent<HTMLInputElement>, option?: Option, value: any }) => void;
+	value?: string;
+	defaultValue?: string;
+	onChange?: (_event: { event: React.MouseEvent<HTMLElement>, option?: Option, value: string }) => void;
 };
 
 type PropsType = CustomProps & Omit<React.ComponentPropsWithoutRef<"input">, keyof CustomProps>
 
 export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.Ref<HTMLInputElement>) => {
 	const {
+		children,
 		fullWidth = false,
+		style,
 		className,
 		disabled = false,
 		placeholder = "",
@@ -34,9 +36,7 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 		value: propValue,
 		defaultValue,
 		onChange,
-		onFocus,
 		onBlur,
-		onKeyDown,
 		...rest
 	} = props;
 
@@ -52,28 +52,8 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 		handleClose();
 	}, rootRef);
 
-	useEffect(() => {
-		const handleKeyEvent = (event: globalThis.KeyboardEvent) => {
-			if (isOpen) {
-				if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-					event.preventDefault();
-				}
-			}
-		};
 
-		// Bind the event listener
-		document.body.addEventListener("keydown", handleKeyEvent);
-		document.body.addEventListener("keyup", handleKeyEvent);
-		return () => {
-			// Unbind the event listener on clean up
-			document.body.removeEventListener("keydown", handleKeyEvent);
-			document.body.removeEventListener("keyup", handleKeyEvent);
-		};
-	}, [isOpen]);
-
-
-
-	const [value, setValue] = useControlled<any>({
+	const [value, setValue] = useControlled<string>({
 		controlled: propValue,
 		default: defaultValue
 	});
@@ -102,33 +82,22 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 	};
 
 
-	const handleOptionClick = (event: React.MouseEvent<HTMLElement> | KeyboardEvent<HTMLInputElement>, option: Option) => {
+	const handleOptionClick = (event: React.MouseEvent<HTMLElement>, option: Option) => {
 		onChange?.({ event, option, value: option.value });
 		setValue(option.value);
 	};
 
-	const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-		onFocus?.(event);
-	};
 
 	const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
 		onBlur?.(event);
 		handleClose();
 	};
 
-
-
 	const rootClassName = clsx(classes.root, {
-		'fullWidth': fullWidth,
+		[classes.fullWidth]: fullWidth,
 	}, className);
 
-
-
-	const triggerClassName = clsx(classes.trigger, {
-		'disabled': disabled
-	});
-
-
+	const triggerClassName = classes.trigger;
 	const optionsClassName = classes.options;
 	const optionClassName = classes.option;
 
@@ -136,9 +105,8 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 		if (options.length > 0) {
 			return (
 				<ul
-					role='listbox'
 					className={optionsClassName}>
-					{React.Children.toArray(options.map((option: Option, index: number) => (
+					{React.Children.toArray(options.map((option: Option) => (
 						<li
 							className={optionClassName}
 							onMouseDown={(event: React.MouseEvent<HTMLLIElement>) => handleOptionClick(event, option)}>
@@ -154,7 +122,9 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 
 	return (
 		<div
+			data-testid="root"
 			ref={rootRef}
+			style={style}
 			className={rootClassName}>
 
 			<input
@@ -164,7 +134,6 @@ export const Dropdown = React.forwardRef((props: PropsType, forwardedRef: React.
 				ref={combinedInputRef}
 				disabled={disabled}
 				value={options?.[selectedOptionIndex]?.label ?? placeholder}
-				onFocus={handleFocus}
 				onBlur={handleBlur}
 				{...rest} />
 

@@ -19,6 +19,7 @@ export const Button = React.forwardRef((props: PropsType, forwardedRef: React.Re
 
 	return (
 		<a
+			role='button'
 			ref={forwardedRef}
 			className={clsx(classes.root, className)}
 			{...rest}

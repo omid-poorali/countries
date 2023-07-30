@@ -26,6 +26,11 @@
   }
 }
 
+.fullWidth {
+  width: 100%;
+}
+
+
 .trigger {
   position: absolute;
   right: 1rem;
@@ -36,17 +41,7 @@
   &[active='true'] {
       transform: rotate(180deg);
   }
-
-  &.disabled {
-      cursor: auto;
-      opacity: 0.6;
-  }
 }
-
-.fullWidth {
-  width: 100%;
-}
-
 
 .options {
   background-color: var(--element-color);

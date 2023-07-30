@@ -50,15 +50,15 @@ export const CountryCard = React.forwardRef<HTMLDivElement, CountryCardProps>((p
 				<h2>{name}</h2>
 
 				<div className={classes.property}>
-					<h3>Population:</h3>
+					<strong>Population:</strong>
 					<span>{population}</span>
 				</div>
 				<div className={classes.property}>
-					<h3>Region:</h3>
+					<strong>Region:</strong>
 					<span>{region}</span>
 				</div>
 				<div className={classes.property}>
-					<h3>Capital:</h3>
+					<strong>Capital:</strong>
 					<span>{capital}</span>
 				</div>
 			</div>

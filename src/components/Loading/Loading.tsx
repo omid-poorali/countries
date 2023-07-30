@@ -13,12 +13,13 @@ type PropsType = CustomProps & Omit<React.ComponentPropsWithoutRef<'svg'>, keyof
 export const Loading = React.forwardRef((props: PropsType, forwardedRef: React.Ref<SVGSVGElement>) => {
 	const {
 		className,
+		style,
 		...rest
 	} = props;
 
 
 	return (
-		<div className={classes.root}>
+		<div data-testid="root" style={style} className={clsx(classes.root, className)}>
 			<svg
 				ref={forwardedRef}
 				className={clsx(classes.pl, className)}

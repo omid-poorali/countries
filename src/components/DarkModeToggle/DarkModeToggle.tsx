@@ -36,13 +36,14 @@ export const DarkModeToggle = React.forwardRef<HTMLButtonElement, DarkModeToggle
 		const themeLocalStorage = localStorage.getItem('theme')
 		const themeSystem = window.matchMedia('(prefers-color-scheme: dark)').matches ? Enums.Theme.DARK : Enums.Theme.LIGHT
 
-		return (themeLocalStorage ?? themeSystem) as Enums.Theme
+		return (themeLocalStorage ?? themeSystem ?? "light") as Enums.Theme
 	}
 
 	useEffect(() => {
-		document.documentElement.setAttribute("data-theme", theme ?? maybeTheme());
-		localStorage.setItem('theme', (theme ?? maybeTheme()))
-		setTheme(theme ?? maybeTheme())
+		const currentTheme = theme ?? maybeTheme();
+		document.documentElement.setAttribute("data-theme", currentTheme);
+		localStorage.setItem('theme', currentTheme)
+		setTheme(currentTheme)
 
 		const useSetTheme = (e: MediaQueryListEvent) => { setTheme(e.matches ? Enums.Theme.DARK : Enums.Theme.LIGHT) }
 
@@ -59,8 +60,9 @@ export const DarkModeToggle = React.forwardRef<HTMLButtonElement, DarkModeToggle
 			ref={ref}
 			className={clsx(classes.root, className)}
 			aria-label="Dark mode toggle"
-			onClick={toggleTheme}
-			{...rest}>
+			{...rest}
+			type='button'
+			onClick={toggleTheme}>
 			{theme === Enums.Theme.DARK ? <MoonFilled /> : <MoonOutline />} Dark Mode
 		</button>
 	)
