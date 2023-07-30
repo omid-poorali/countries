@@ -1,5 +1,5 @@
 import '@/styles/index.scss';
-import { Layout } from '@/components';
+import { Header } from '@/components';
 import type { Metadata } from 'next';
 import { Nunito_Sans } from 'next/font/google';
 import GoogleAnalytics from "./GoogleAnalytics";
@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={nunito.className}>
         <GoogleAnalytics trackPageViews />
-        <Layout.Header />
+        <Header />
         <main>
           {children}
         </main>
