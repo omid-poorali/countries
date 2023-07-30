@@ -1,34 +1,34 @@
 import { render, screen, act, fireEvent } from "@testing-library/react";
-import { InputBase } from "./InputBase";
+import { InputText } from "./InputText";
 import { createRef } from "react";
 
-const inputBaseId = 'root'
+const InputTextId = 'root'
 
-describe("InputBase component tests", () => {
+describe("InputText component tests", () => {
 
     it("should not render child elements", () => {
         const testMessage = 'Test Message';
-        render(<InputBase>{testMessage}</InputBase>)
+        render(<InputText>{testMessage}</InputText>)
         expect(screen.queryByText(testMessage)).toBeNull()
     });
 
     it("should have my-class property value", () => {
         const className = 'my-class';
-        render(<InputBase className={className} />)
-        expect(screen.getByTestId(inputBaseId).classList.contains(className)).toBe(true)
+        render(<InputText className={className} />)
+        expect(screen.getByTestId(InputTextId).classList.contains(className)).toBe(true)
     });
 
 
     it("should have style property", () => {
         const style = { color: 'red' };
-        render(<InputBase style={style} />)
-        expect(screen.getByTestId(inputBaseId).style.color).toBe(style.color)
+        render(<InputText style={style} />)
+        expect(screen.getByTestId(InputTextId).style.color).toBe(style.color)
     });
 
 
     it("should not respond the focus event when disabled", () => {
         const handleFocus = jest.fn();
-        render(<InputBase disabled onFocus={handleFocus} />);
+        render(<InputText disabled onFocus={handleFocus} />);
 
         const input = screen.getByRole("textbox");
         act(() => {
@@ -44,7 +44,7 @@ describe("InputBase component tests", () => {
         const handleKeyUp = jest.fn();
         const handleKeyDown = jest.fn();
         render(
-            <InputBase
+            <InputText
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
@@ -79,7 +79,7 @@ describe("InputBase component tests", () => {
         const handleClick = jest.fn();
 
         render(
-            <InputBase
+            <InputText
                 onClick={handleClick}
             />
         );
@@ -90,7 +90,7 @@ describe("InputBase component tests", () => {
 
     it("should be able to access the native input", () => {
         const inputRef: any = createRef();
-        render(<InputBase ref={inputRef} />);
+        render(<InputText ref={inputRef} />);
         const input = screen.getByRole("textbox");
         expect(inputRef.current).toEqual(input);
     });

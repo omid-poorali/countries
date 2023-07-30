@@ -1,0 +1,48 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 30ch;
+  background-color: var(--element-color);
+  border-radius: 3px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.startAdornment {
+  padding-top: 0.5rem;
+  position: absolute;
+  left: .5rem;
+}
+
+.input {
+  padding: 1rem;
+  width: 100%;
+  background: none;
+  border-style: none;
+  outline: none;
+  color: var(--text-color);
+
+  &:-internal-autofill-selected {
+    background-color: transparent;
+  }
+
+  &::placeholder {
+    color: var(--text-color);
+  }
+
+  &:hover {
+    background-color: var(--element-color);
+  }
+
+  &:focus {
+    background-color: var(--element-color);
+  }
+}
+
+.inputStyleForStartAdornment {
+  padding-left: 2rem;
+}

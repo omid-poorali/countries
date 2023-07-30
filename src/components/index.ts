@@ -4,5 +4,5 @@ export * from './CountryCard';
 export * from './Button';
 export * from './Dropdown';
 export * from './Loading';
-export * from './InputBase';
+export * from './InputText';
 export * from './Error';

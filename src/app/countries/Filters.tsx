@@ -1,9 +1,9 @@
 "use client"
 
-import { InputBase } from '@/components';
 import { useQueryParam } from '@/hooks';
 import classes from './Filters.module.scss';
-import { Dropdown } from '@/components';
+import { Dropdown, InputText } from '@/components';
+import SerachIcon from '@/components/Icons/Search';
 import { ClientComponentCountries } from './ClientComponentCountries';
 
 const regions = [
@@ -43,7 +43,8 @@ export const Filters = ({
         <div className='container'>
             <div className={classes.filters}>
 
-                <InputBase
+                <InputText
+                    startAdornment={<SerachIcon />}
                     className={classes.searchBar}
                     name="query"
                     placeholder='Search for a country...'
